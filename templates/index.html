@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1 class='text-center'>Task Master</h1>
+
+    {% if tasks|length < 1 %}
+    <h6 class='text-center'>There are no tasks. Create one below!</h6>
+    {% else %}
+    <table class="table" width='25%'>
+        <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Added</th>
+            <th scope="col">Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_created.date() }}</td>
+            <td>
+                <a href="/delete/{{task.id}}">Delete</a><br>
+                <a href="/update/{{task.id}}">Update</a>
+            </td>
+        </tr>
+        {% endfor%}
+    </table>
+    {% endif %}
+    <form action='/' method='POST'>
+        <input type='text' name='content' id='content'>
+        <input type='submit' value="Add Task">
+    </form>
+
+
+</div>
+{% endblock %}
