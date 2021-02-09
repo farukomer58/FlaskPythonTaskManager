@@ -1,0 +1,16 @@
+pip3 install virtualenv
+
+virtualenv env (Creates folder called env)
+
+env\Scripts\activate (Activates env folder
+
+pip3 install flask flask--sqlalchemy
+
+
+Heroku deployment 
+-1) env\Scripts\activate 
+-2) pip3 install gunicorn
+-3) pip3 freeze > requirements.txt
+-4) touch Procfile -> web:gunicorn
+-5) heroku create flaskpythontaskmanager
+-6) git push heroku master
